@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+{% if error %}
+<script>
+    alert('{{error}}')
+</script>
+{% endif %}
+    <div class="container" style="margin-top: 100px">
+    <link href="{% static 'mycss/form.css' %}" rel="stylesheet">
+    <div class="header">
+        <div class="py-5 text-center">
+            <h1 id="title" class="text-center">Article form</h1>
+            <p id="description" class="description text-center">
+                (Please fill the form in detail!)
+            </p>
+        </div>
+    </div>
+
+        <!返回变量:category  tag  title articleImage abstract title>
+        <!第一个下拉框内容>
+    <form method="post" enctype="multipart/form-data" action="{% url 'create_article'%}"  id="article-form" >
+        <div class="form-group">
+            <label for="category">Which category your article belongs to?</label>
+            <select id="category" name="category" class="form-control" onchange="Change_second_selectwords();" required>
+                <option>please select an option</option>
+                <option value="Corporate">Corporate</option>
+                <option value="Crime">Crime</option>
+                <option value="Education">Education</option>
+                <option value="Labor">Labor</option>
+                <option value="Family and juvenile">Family and juvenile</option>
+                <option value="Health">Health</option>
+                <option value="Immigration">Immigrationn</option>
+                <option value="Education">Education</option>
+                <option value="Intellectual property">Intellectual property</option>
+                <option value="Real estate">Real estate</option>
+                <option value="Securities">Securities</option>
+                <option value="Tax">Tax</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="tag">Which tag your article belongs to?</label>
+            <select id="tag" type="submit" name="tag" class="form-control" required></select>
+        </div>
+        <div class="form-group">
+            <label for="title">Please input the title of your article(Max: 200 characters):</label>
+            <textarea id="title" class="input-textarea" name="title" placeholder="Title..."
+                      style="margin: 0px; height: 40px;" required maxlength="200"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="articleImage">Upload your image for the article:</label>
+            <input type="file" name="articleImage" class="form-control-file" id="articleImage"  required accept="image/*"/>
+        </div>
+
+        <div class="form-group">
+            <label for="abstract" class="input-checkbox">Please input the abstract of your article(Max: 450 characters):</label>
+            <textarea id="abstract" class="input-textarea" name="abstract" placeholder="Abstract..."
+                      style="margin: 0px; height: 40px;" required maxlength="450"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="article" class="input-checkbox">Describe your article in detail:</label>
+            <br>
+            <textarea id="article" class="input-textarea" name="article" placeholder="Enter your article here..."
+                      style="margin: 0px; height: 120px;" type="submit" required></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" id="submit" class="submit-button">
+                Submit
+            </button>
+        </div>
+        {% csrf_token %}
+    </form>
+    </div>
+    <script>
+    var first_keywords = {};
+    //定义每个字母对应的第二个下拉框
+    first_keywords['Corporate'] = ['Contracts', 'Legislative compliance','Liability matters'];
+    first_keywords['Crime'] = ['Defense for victim','Defense for criminal','Victimless crime'];
+    first_keywords['Education'] = ['Student residency', 'Personnel issues',
+    'Student discipline','Special Education','Tuition Fraud'];
+    first_keywords['Labor'] = ['Wage disputes', 'Sexual harassment', 'Child labor','Unlawful terminations'
+        ,'Race, gender, sexual orientation, age, and disability discrimination'
+        ,'The right to unionize','Workplace safety'];
+    first_keywords['Family and juvenile']=['Adoptions','Child support','Domestic abuse'
+        ,'Divorce','Prenuptial agreements'];
+    first_keywords['Health'] =['Medicare policy and compliance','Public health policy','Biomedicine and telemedicine'
+    ,'Mergers and acquisitions','Risk management','Bioethics and clinical ethics'];
+    first_keywords['Immigration'] =['Asylum/refugee law','Business immigration law','International trade negotiations'];
+    first_keywords['Intellectual property'] =['Patent law','Copyright law'];
+    first_keywords['Real estate'] =['Land and building ownership','Rights to possess and use land or buildings',
+    'Sale and purchase of real property','Landlord-tenant issues','Development of real property'];
+    first_keywords['Securities'] =['Stocks','Mergers','Acquisitions','Corporate takeovers'];
+    first_keywords['Tax'] =['Income taxes','Mergers','Capital gains taxes','Tax evasion'];
+
+
+    function Change_second_selectwords() {
+        //根据id找到两个下拉框对象
+        var target1 = document.getElementById("category");
+        var target2 = document.getElementById("tag");
+        //得到第一个下拉框的内容
+        var selected_initial = target1.options[target1.selectedIndex].value;
+        console.log(selected_initial);
+
+        //清空第二个下拉框
+        while (target2.options.length) {
+            target2.remove(0);
+        }
+        //根据第一个下拉框的内容找到对应的列表
+        var initial_list = first_keywords[selected_initial];
+        if (initial_list) {
+            for (var i = 0; i < initial_list.length; i++) {
+                var item = new Option(initial_list[i], initial_list[i]);
+                //将列表中的内容加入到第二个下拉框
+                target2.options.add(item);
+            }
+        }
+    }
+
+
+</script>
+{% endblock %}

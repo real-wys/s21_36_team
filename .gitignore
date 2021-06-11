@@ -1,0 +1,9 @@
+*.pptx
+.DS_Store
+*.pyc
+.idea
+db.sqlite3
+migrations
+venv
+my_env
+config.ini

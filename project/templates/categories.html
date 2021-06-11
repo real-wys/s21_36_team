@@ -1,0 +1,287 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+
+
+<link href="{% static 'mycss/collapse.css' %}" rel="stylesheet">
+<script src="{% static 'myjs/collapse.js' %}" type="text/javascript"></script>
+<script src="{% static 'myjs/searchByTag.js' %}" type="text/javascript"></script>
+
+{% if tag_not_found %}
+<script>
+    alert('{{tag_not_found}}')
+</script>
+{% endif %}
+
+{% if fault_tag %}
+<script>
+    alert('{{fault_tag}}')
+</script>
+{% endif %}
+
+
+<div class="container">
+    <div class="accordion-option">
+        <h3 style="align-content: center;margin-top: 80px">Search by specific tags!</h3>
+            <a href="javascript:void(0)" class="toggle-accordion active" accordion-id="#accordion"></a>
+    </div>
+    <div class="clearfix"></div>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <!--catogory 1-->
+        <div class="panel panel-default" >
+            <div class="panel-heading" style="border-color: #fbfbfbc9;border-style: solid;border-radius: 0.3px" role="tab" id="heading1">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                        Corporate
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+                <div class="panel-body">
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >Contracts</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >Legislative compliance</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >Liability matters</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!--catogory 2-->
+        <div class="panel panel-default" >
+            <div class="panel-heading" style="border-color: #fbfbfbc9;border-style: solid;border-radius: 0.1px" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        Crime
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >Defense for victim</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >Defense for criminal</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >Victimless crime</button>
+                </div>
+            </div>
+        </div>
+
+        <!--catogory 3-->
+        <div class="panel panel-default" >
+            <div class="panel-heading" style="border-color: #fbfbfbc9;border-style: solid;border-radius: 0.3px" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                        Education
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >Student residency</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >Personnel issues</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >Student discipline</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >Special Education</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >Tuition Fraud</button>
+                </div>
+            </div>
+        </div>
+        <!--catogory 4-->
+        <div class="panel panel-default" >
+            <div class="panel-heading" style="border-color: #fbfbfbc9;border-style: solid;border-radius: 0.3px" role="tab" id="headingFour">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                        Labor
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFour">
+                <div class="panel-body">
+
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >Wage disputes</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >Sexual harassment</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >Child labor</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Unlawful terminations</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Race, gender, sexual orientation, age, and disability discrimination</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" style="margin-top: 5px;">The right to unionize</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" style="margin-top: 5px;">Workplace safety</button>
+                </div>
+            </div>
+        </div>
+        <!--catogory 5-->
+        <div class="panel panel-default" >
+            <div class="panel-heading" style="border-color: #fbfbfbc9;border-style: solid;border-radius: 0.3px" role="tab" id="headingFive">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                        Family and juvenile
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFive" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFive">
+                <div class="panel-body">
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >Adoptions</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >Child support</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >Divorce</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >Domestic abuse</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >Prenuptial agreements</button>
+                </div>
+            </div>
+        </div>
+        <!--6-->
+        <div class="panel panel-default" >
+            <div class="panel-heading" style="border-color: #fbfbfbc9;border-style: solid;border-radius: 0.3px" role="tab" id="headingSix">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                        Health
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseSix" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSix">
+                <div class="panel-body">
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Medicare policy and compliance
+                    </button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Public health policy
+                    </button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Biomedicine and telemedicine
+                    </button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Mergers and acquisitions
+                    </button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" style="margin-top: 5px" >
+                        Risk management</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Bioethics and clinical ethics
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--7-->
+        <div class="panel panel-default" >
+            <div class="panel-heading" style="border-color: #fbfbfbc9;border-style: solid;border-radius: 0.3px" role="tab" id="headingSeven">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+                        Immigration
+
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseSeven" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSeven">
+                <div class="panel-body">
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Asylum/refugee law
+                    </button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Business immigration law
+                    </button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Criminal and deportation defense
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--    8-->
+        <div class="panel panel-default" >
+            <div class="panel-heading" style="border-color: #fbfbfbc9;border-style: solid;border-radius: 0.3px" role="tab" id="headingEight">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+                        Intellectual property
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseEight" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingEight">
+                <div class="panel-body">
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Patent law</button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Copyright law
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--        9-->
+        <div class="panel panel-default" >
+            <div class="panel-heading" style="border-color: #fbfbfbc9;border-style: solid;border-radius: 0.3px" role="tab" id="headingNine">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
+                        Real estate
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseNine" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingNine">
+                <div class="panel-body">
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Land and building ownership
+                    </button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Rights to possess and use land or buildings
+                    </button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Sale and purchase of real property
+                    </button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Landlord-tenant issues
+                    </button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" style="margin-top: 5px" >
+                        Development of real property
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--10-->
+        <div class="panel panel-default" >
+            <div class="panel-heading" style="border-color: #fbfbfbc9;border-style: solid;border-radius: 0.3px" role="tab" id="headingTen">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
+                        Securities
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTen" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTen">
+                <div class="panel-body">
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Stocks
+                    </button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Mergers
+                    </button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Acquisitions
+                    </button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Corporate takeovers
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--11-->
+        <div class="panel panel-default" >
+            <div class="panel-heading" style="border-color: #fbfbfbc9;border-style: solid;border-radius: 0.3px" role="tab" id="headingEleven">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven" aria-expanded="true" aria-controls="collapseEleven">
+                        Tax
+
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseEleven" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingEleven">
+                <div class="panel-body">
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Income taxes
+                    </button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Capital gains taxes
+                    </button>
+                    <button class="btn btn-primary" type="button" style="background-color: #202020;border: none" >
+                        Tax evasion
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

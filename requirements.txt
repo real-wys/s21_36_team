@@ -1,0 +1,3 @@
+django-notifications-hq
+django-mysql
+Pillow

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow"> 
+    
+    {% load static %}
+    <link href="{% static 'mycss/bootstrap.login.css' %}" rel="stylesheet">
+    <link href="{% static 'mycss/style.default.css' %}" rel="stylesheet" id="theme-stylesheet">
+
+    <!-- <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script> -->
+    <script src="{% static 'myjs/jquery.min.js' %}"></script>
+    <script src="{% static 'myjs/bootstrap.min.js' %}"></script>
+
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="page login-page">
+        <div class="container d-flex align-items-center">
+            <div class="form-holder has-shadow">
+                <div class="row">
+                    <!-- Logo & Information Panel-->
+                    <div class="col-lg-6">
+                        <div class="info d-flex align-items-center">
+                            <div class="content">
+                                <div class="logo">
+                                    <h1>Welcome to Login</h1>
+                                </div>
+                                <p>Online Legal Advisory System</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Form Panel    -->
+                    <div class="col-lg-6 bg-white">
+                        <form class="form d-flex align-items-center" method="post" action="{% url 'login' %}">
+                            <div class="content">
+                                <div class="form-group">
+                                    {{form.username}}
+
+                                    {% if form.username.errors %}
+                                    <script>$('#username').addClass("form-control is-invalid");</script>
+                                    <div class="invalid-feedback">
+                                        Invalid username/password
+                                    </div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="form-group">
+                                    {{form.password}}
+
+                                    {% if form.password.errors %}
+                                    <script>$('#password').addClass("form-control is-invalid");</script>
+                                    <div class="invalid-feedback">
+                                        Invalid username/password
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                {% csrf_token %}
+                                <button id="login" type="submit" class="btn btn-primary">Login</button>
+                                
+                                <div style="margin-top: -40px;">
+                                    <!-- <div class="custom-control custom-checkbox " style="float: right;">
+                                        <input type="checkbox" class="custom-control-input" id="check2">
+                                        <label class="custom-control-label" for="check2">自动登录</label>
+                                    </div> -->
+                                    <div class="custom-control custom-checkbox " style="float: right;">
+                                        <input type="checkbox" class="custom-control-input" id="check1">
+                                        <label class="custom-control-label" for="check1">Remember Password&nbsp;&nbsp;</label>
+                                    </div>
+                                </div>
+    
+                                <br />
+                                <small>No Account?</small>
+                                <a href="{% url 'register' %}" class="signup">&nbsp;Register</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript files-->
+    <script src="{% static 'bootstrap/vendor/jquery-validation/jquery.validate.min.js' %}"></script>
+    <!--表单验证-->
+    <!-- Main File-->
+    <script src="{% static 'bootstrap/js/front.js' %}"></script>
+    <script>
+        $(function () {
+            /*判断上次是否勾选记住密码和自动登录*/
+            var check1s = localStorage.getItem("check1");
+            var check2s = localStorage.getItem("check2");
+            var oldName = localStorage.getItem("userName");
+            var oldPass = localStorage.getItem("passWord");
+            if (check1s == "true") {
+                $("#login-username").val(oldName);
+                $("#login-password").val(oldPass);
+                $("#check1").prop('checked', true);
+            } else {
+                $("#login-username").val('');
+                $("#login-password").val('');
+                $("#check1").prop('checked', false);
+            }
+            if (check2s == "true") {
+                $("#check2").prop('checked', true);
+                $("#loginFrom").submit();
+                //location="https://www.baidu.com?userName="+oldName+"&passWord="+oldPass;//添加退出当前账号功能
+            } else {
+                $("#check2").prop('checked', false);
+            }
+            /*拿到刚刚注册的账号*/
+    		/*if(localStorage.getItem("name")!=null){
+    			$("#login-username").val(localStorage.getItem("name"));
+    		}*/
+            /*登录*/
+            $("#login").click(function () {
+                var userName = $("#login-username").val();
+                var passWord = $("#login-password").val();
+                /*获取当前输入的账号密码*/
+                localStorage.setItem("userName", userName)
+                localStorage.setItem("passWord", passWord)
+                /*获取记住密码  自动登录的 checkbox的值*/
+                var check1 = $("#check1").prop('checked');
+                var check2 = $('#check2').prop('checked');
+                localStorage.setItem("check1", check1);
+                localStorage.setItem("check2", check2);
+            })
+
+        })
+    </script>
+</body>
+
+</html>

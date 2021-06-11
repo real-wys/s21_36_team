@@ -1,0 +1,58 @@
+{% extends "base.html" %}	
+{% block content %}
+
+{% load static %}
+<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+<link href="{% static 'mycss/lawyer_list.css' %}" rel="stylesheet">
+<!-- <link href="{% static 'mycss/lawyer_list_style.scss' %}" rel="stylesheet"> -->
+<div class="container">
+    <br><br><br><br>
+    <h1 class="h2 text-center text-light bg-dark pt-2 pb-3 mb-0">Our Experts</h1>
+    <div class="jumbotron py-4 rounded-0">
+        <p class="lead">Meet with the professional lawyers</p>
+    </div>
+
+
+    <div class="btn-group sort-btn">
+        <button class="btn btn-dark btn-md w-20" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort</button>
+        <button class="bbtn btn-dark btn-md w-20 dropdown-toggle" data-sort="none"><i class="fa fa-sort"></i></button><!-- .dropdown-toggle adds rounded borders and reduces padding. It does not trigger dropdowns. -->
+        <ul class="dropdown-menu">
+            <li><a href="?sort=review_score" tabindex="-1" data-type="alpha">Review Score</a></li>
+            <li><a href="?sort=last_name" tabindex="-1" data-type="alpha">Last Name</a></li>
+            <li><a href="?sort=first_name" tabindex="-1" data-type="alpha">First Name</a></li>
+            <!-- <li><a href="?sort=company" tabindex="-1" data-type="numeric">Date</a></li> -->
+        </ul>
+    </div>
+    <ul class="list-group list-group-horizontal align-items-stretch flex-wrap">
+
+	<!-- <div class="card-deck"> -->
+        {% for lawyer in lawyers %}
+        <li class="list-group-item border-0">
+            <div class="card my-3">
+                {% if lawyer.profile_picture %}
+                <img src="{% url 'picture' lawyer.profile_user.id %}" style="width: 150px;height:150px" alt="Mobirise" class="card-img-top">
+                {% else %}
+                <img src="{% static 'pic/default.jpeg' %}" style="width: 150px;height:150px" class="card-img-top">
+                {% endif %}
+
+
+                <div class="card-body">
+                    <h4 class="card-title">{{lawyer.profile_user.first_name}} {{lawyer.profile_user.last_name}}</h4>
+                    <p class="card-text">
+                        <!-- {{lawyer.company}} <br> -->
+                        {{lawyer.profile_user.email}}
+                    </p>
+                    <a href="{% url 'other_profile' lawyer.profile_user.id %}" class="btn btn-primary display-6" style="margin-top: 50px">
+                        View Profile
+                    </a>
+                    <div class="corner-ribbon top-right sticky green shadow">{{lawyer.review_score}}</div>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+
+	<!-- </div> -->
+    </ul>
+</div>
+
+{% endblock content%}

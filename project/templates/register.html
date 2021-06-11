@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="robots" content="all,follow"> {% load static %}
+	<link href="{% static 'mycss/bootstrap.login.css' %}" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'mycss/style.default.css' %}" id="theme-stylesheet">
+
+	<!-- <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script> -->
+	<script src="{% static 'myjs/jquery.min.js' %}"></script>
+	<script src="{% static 'myjs/bootstrap.min.js' %}"></script>
+
+	<title>Register</title>
+</head>
+
+<body>
+	<div class="page login-page">
+		<div class="container d-flex align-items-center">
+			<div class="form-holder has-shadow">
+				<div class="row">
+					<!-- Logo & Information Panel-->
+					<div class="col-lg-6">
+						<div class="info d-flex align-items-center">
+							<div class="content">
+								<div class="logo">
+									<h1>Welcom to Register</h1>
+								</div>
+								<p>Online Legal Advisory System</p>
+							</div>
+						</div>
+					</div>
+					<!-- Form Panel    -->
+					<div class="col-lg-6 bg-white">
+						<form class="form d-flex align-items-center" method="post" action="{% url 'register' %}">
+							<div class="content">
+								<div class="form-group">
+									{{form.username}}
+
+									{% if form.username.errors %}
+									<script>$('#username').addClass("form-control is-invalid");</script>
+									<div class="invalid-feedback">
+										Username is already taken
+									</div>
+									{% endif %}
+								</div>
+
+								<div class="form-group">
+									{{form.password}}
+
+									{% if form.password.errors %}
+									<script>$('#password').addClass("form-control is-invalid");</script>
+									<div class="invalid-feedback">
+										Passwords dismatch
+									</div>
+									{% endif %}
+								</div>
+
+								<div class="form-group">
+									{{form.confPassword}}
+
+									{% if form.confPassword.errors %}
+									<script>$('#confPassword').addClass("form-control is-invalid");</script>
+									<div class="invalid-feedback">
+										Passwords dismatch
+									</div>
+									{% endif %}
+								</div>
+
+								<div class="form-group">
+									{{form.email}}
+
+									{% if form.email.errors %}
+									<script>$('#email').addClass("form-control is-invalid");</script>
+									<div class="invalid-feedback">
+										email format error
+									</div>
+									{% endif %}
+								</div>
+
+								<div class="form-group">
+									{{form.lastname}}
+									{{form.firstname}}
+								</div>
+
+								<div class="form-group">
+									Register as:   {{form.role}}
+								</div>
+
+								{% csrf_token %}
+							
+								<div class="form-group">
+									<button id="regbtn" type="submit" name="registerSubmit" class="btn btn-primary">Register</button>
+								</div>
+								<small>Already have an account?</small>
+								<a href="{% url 'login' %}" class="signup">&nbsp;Login</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

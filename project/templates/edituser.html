@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Fancy multiple select</title>
+  <!-- <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script> -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"> {% load static %}
+  <script src="{% static 'myjs/select.js' %}"></script>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="{% static 'mycss/edituser.css' %}">
+  <link rel="stylesheet" href="{% static 'mycss/select.css' %}">
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  {% load static %}
+  <div class="container">
+    <form id="contact" enctype="multipart/form-data" action="{% url 'changeedit' %}" method="post">
+      <a rel="stylesheet" href="{% url 'myprofile' %}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 15 15">
+          <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+          />
+          <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+          />
+        </svg>
+        Back to profile page
+      </a>
+      <h3>User Profile Edit Form</h3>
+      <h4>Edit your personal informatioin</h4>
+      <fieldset>
+        <input type="file" name="picture" autofocus>
+      </fieldset>
+      <fieldset>
+        <input placeholder="Your company" type="text" name="company" autofocus>
+      </fieldset>
+      <fieldset>
+        <input placeholder="Your address" type="text" name="address" autofocus>
+      </fieldset>
+      <fieldset>
+        <input placeholder="Your Phone Number" type="tel" name="phone">
+      </fieldset>
+      <fieldset>
+        <textarea placeholder="Type your self introduction here..." name="introduction"></textarea>
+      </fieldset>
+
+      <fieldset>
+        <label for="tags">Interested Tags:</label>
+        <select id="tags" name="tags" multiple="multiple">
+          <optgroup label="Corporate">
+            <option value="Contracts">Contracts</option>
+            <option value="Legislative compliance">Legislative compliance</option>
+            <option value="Liability matters">Liability matters</option>
+          </optgroup>
+          <optgroup label="Crime">
+            <option value="Defense for victim">Defense for victim</option>
+            <option value="Defense for criminal">Defense for criminal</option>
+            <option value="Victimless crime">Victimless crime</option>
+          </optgroup>
+          <optgroup label="Education">
+            <option value="Student residency">Student residency</option>
+            <option value="Personnel issues">Personnel issues</option>
+            <option value="Student discipline">Student discipline</option>
+            <option value="Special Education">Special Education</option>
+            <option value="Tuition Fraud">Tuition Fraud</option>
+          </optgroup>
+          <optgroup label="Labor">
+            <option value="Wage disputes">Wage disputes</option>
+            <option value="Sexual harassment">Sexual harassment</option>
+            <option value="Child labor">Child labor</option>
+            <option value="Unlawful terminations">Unlawful terminations</option>
+            <option value="Race|gender|sexual orientation|age|disability discrimination">Race|gender|sexual orientation|age|disability discrimination</option>
+            <option value="The right to unionize">The right to unionize</option>
+            <option value="Workplace safety">Workplace safety</option>
+          </optgroup>
+          <optgroup label="Family and juvenile">
+            <option value="Adoptions">Adoptions</option>
+            <option value="Child support">Child support</option>
+            <option value="Domestic abuse">Domestic abuse</option>
+            <option value="Divorce">Divorce</option>
+            <option value="Prenuptial agreements">Prenuptial agreements</option>
+          </optgroup>
+          <optgroup label="Health">
+            <option value="Medicare policy and compliance">Medicare policy and compliance</option>
+            <option value="Public health policy">Public health policy</option>
+            <option value="Biomedicine and telemedicine">Biomedicine and telemedicine</option>
+            <option value="Mergers and acquisitions">Mergers and acquisitions</option>
+            <option value="Risk management">Risk management</option>
+            <option value="Bioethics and clinical ethics">Bioethics and clinical ethics</option>
+          </optgroup>
+          <optgroup label="Immigration">
+            <option value="Asylum/refugee law">Asylum/refugee law</option>
+            <option value="Business immigration law">Business immigration law</option>
+            <option value="International trade negotiations">International trade negotiations</option>
+          </optgroup>
+          <optgroup label="Intellectual property">
+            <option value="Patent law">Patent law</option>
+            <option value="Copyright law">Copyright law</option>
+          </optgroup>
+          <optgroup label="Real estate">
+            <option value="Land and building ownership">Land and building ownership</option>
+            <option value="Rights to possess and use land or buildings">Rights to possess and use land or buildings</option>
+            <option value="Sale and purchase of real property">Sale and purchase of real property</option>
+            <option value="Landlord-tenant issues">Landlord-tenant issues</otion>
+              <option value="Development of real property">Development of real property</option>
+          </optgroup>
+          <optgroup label="Securities">
+            <option value="Stocks">Stocks</option>
+            <option value="Mergers">Mergers</option>
+            <option value="Acquisitions">Acquisitions</option>
+            <option value="Corporate takeovers">Corporate takeovers</option>
+          </optgroup>
+          <optgroup label="Tax">
+            <option value="Income taxes">Income taxes</option>
+            <option value="Capital gains taxes">Capital gains taxes</option>
+            <option value="Tax evasion">Tax evasion</option>
+          </optgroup>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+      </fieldset>
+      {% csrf_token %}
+    </form>
+  </div>
+
+</body>

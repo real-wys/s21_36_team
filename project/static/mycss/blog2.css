@@ -1,0 +1,245 @@
+/***************** Base ******************/
+
+html {
+  background-color: #dbe2ec;
+}
+
+.flexbox-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /*margin-top: 4vw;*/
+}
+
+.box {
+    position: relative;
+    width: 290px;
+    height: 500px;
+    margin: 10px;
+    box-shadow: 0 5px 25px rgba(0,0,0,.10);
+    color: #161B22;
+    background-color: #f8f9fa;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  background-color: #FBFBFC;
+  width: 100%;
+  height: 8%;
+  bottom: 0;
+}
+
+.navbar a {
+  width: 4px;
+  height: 4px;
+  background-color: darkgrey;
+  border-radius: 50%;
+}
+
+.navbar > .slider {
+  position: relative;
+  left: 1px;
+}
+
+.navbar > .close {
+  font-size: 0.666em;
+  right: 10px;
+  position: relative;
+}
+
+.navbar > .icon {
+  position: relative;
+  left: 10px;
+}
+
+.headline,
+.navbar,
+.comment-section .comment-heading {
+  text-transform: uppercase;
+}
+
+.navbar .close,
+.comment-heading,
+.username {
+  font-weight: 800;
+}
+
+.headline,
+.navbar {
+  font-family: "Hind Guntur", Helvetica, Arial, sans-serif;
+}
+
+.article,
+.comment-box {
+  font-family: "Roboto Slab", serif;
+}
+
+/****** Preview 1 - Headline section******/
+
+.headline {
+  display: block;
+  position: relative;
+  background-image: url(https://res.cloudinary.com/boniverski/image/upload/v1475749036/child.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.headline-wrap {
+  display: inline-block;
+  position: absolute;
+  height: 90%;
+  top: 0px;
+  margin: 190px 100px 0 22px;
+}
+
+.author {
+  letter-spacing: 1.5px;
+  color: white;
+}
+
+.headline h1 {
+  color: white;
+  font-size: 1.855em;
+  font-weight: bold;
+  line-height: 1.3;
+  letter-spacing: 1.2px;
+  margin: 0;
+  transform : scale(1,0.99);
+  -webkit-transform:scale(1,0.9); /* Safari and Chrome */
+  -moz-transform:scale(1,0.9); /* Firefox */
+  -ms-transform:scale(1,0.9); /* IE 9+ */
+  -o-transform:scale(1,0.9); /* Opera */
+}
+
+.tags {
+  float: left;
+  border: 1px solid white;
+  border-radius: 1px;
+  background-color: white;
+  padding: 1.5px 9px;
+  color: #2c3137;
+  font-weight: bold;
+  letter-spacing: 1.1px;
+}
+
+.headline-wrap > .author, .tags {
+  font-size: 0.566em;
+}
+
+.navbar a:nth-child(1),
+.navbar2 a:nth-of-type(2) {
+  background-color: #161B22;
+}
+
+.navbar > p, .slider, .icon {
+  display: inline-flex;
+  color: #2c3137;
+  /*margin: auto;*/
+}
+
+.navbar > .slider a {
+  margin: 4px;
+}
+
+/******** Preview 2 - Blog post ********/
+
+.article {
+  color: #2c3137;
+  display: inline-block;
+  position: relative;
+  height: 90%;
+}
+
+.article p {
+  font-size: 0.677em;
+  margin-top: 0;
+  padding: 2.1em;
+  line-height: 2.15;
+  letter-spacing: 1px;
+}
+
+.article p::first-letter {
+  font-size: 590%;
+  line-height: 95%;
+  float: left;
+  padding-right: 13px;
+}
+
+/*** Preview 3 - Comment section ****/
+
+.comment-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: #2c3137;
+  background-color: #FBFBFC;
+}
+
+.comment-heading {
+  width: 100%;
+  height: 10%;
+  display: inline-flex;
+  position: relative;
+}
+.comment-heading > p, h6 {
+  font-family: "Robot Slab", Helvetica, Arial, sans-serif;
+  display: inline;
+  margin: auto;
+}
+
+.comment-heading > p {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+}
+
+.comment-wrapper {
+  font-size: 0.855em;
+  line-height: 1.6;
+  position: relative;
+  height: 90%;
+  width: 89%;
+  top: 10px;
+}
+
+.comment-box {
+  height: 25%;
+  display: inline-flex;
+  position: relative;
+  font-size: 0.777em;
+  letter-spacing: 0.2px;
+}
+
+.comment-box span {
+  margin-right: 6px;
+}
+
+.comment-text > .time {
+  color: #adadad;
+}
+
+.comment-box > .avatar, .comment-text {
+  display: inline-block;
+}
+
+.comment-text {
+  margin-left: 5%;
+}
+.comment-text > p {
+  display: inline-block;
+}
+
+.avatar img {
+  margin-left: 5px;
+  border-radius: 100%;
+  max-width: 35px;
+}
